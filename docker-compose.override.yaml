@@ -1,0 +1,9 @@
+# Only for development
+version: "3.7"
+services:
+  mq:
+    ports:
+      - 5672:5672
+    environment:
+      RABBITMQ_DEFAULT_USER: lemon
+      RABBITMQ_DEFAULT_PASS: 12345

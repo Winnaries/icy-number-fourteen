@@ -1,0 +1,12 @@
+# General Environment
+version: "3.7"
+services:
+  mq:
+    image: rabbitmq:3
+    networks:
+      - main
+
+networks:
+  main:
+    driver: bridge
+    external: false
