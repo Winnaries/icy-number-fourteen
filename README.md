@@ -12,4 +12,4 @@ First of all, in order to use this repository, please install Docker (https://ww
 4. Start developing and playing with the RabbitMQ. 
 5. After finish developing, go to the same terminal you earlier and press `ctrl + c` to peacefully close the environment. 
 
-> It is worth to note that the default username and password to access the RabbitMQ server is `lemon` and `12345` respectively. For example, those who use amqp library could use `amqp://lemon:12345@localhost:5672` as a connection url. 
+> It is worth to note that the default username and password to access the RabbitMQ server is `lemon` and `12345` respectively. For example, those who use `amqp` library could use `amqp://lemon:12345@localhost:5672` as a connection url. (See examples in the folder `mq-test`.)
