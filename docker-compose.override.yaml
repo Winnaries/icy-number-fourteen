@@ -1,9 +1,45 @@
 # Only for development
 version: "3.7"
 services:
+  # Messaging Queue
   mq:
     ports:
       - 5672:5672
     environment:
       RABBITMQ_DEFAULT_USER: lemon
       RABBITMQ_DEFAULT_PASS: 12345
+   # People Service
+  people-mongo:
+    ports:
+      - 27017:27017
+    volumes:
+      - dev-people-db:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: lemon
+      MONGO_INITDB_ROOT_PASSWORD: 12345
+    networks:
+      - dev-people
+  people-mongo-express:
+    image: mongo-express:latest
+    restart: always
+    depends_on:
+      - people-mongo
+    ports:
+      - 8081:8081
+    networks:
+      - dev-people
+    environment:
+      ME_CONFIG_MONGODB_SERVER: people-mongo
+      ME_CONFIG_MONGODB_ADMINUSERNAME: lemon
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 12345
+      ME_CONFIG_BASICAUTH_USERNAME: lemon
+      ME_CONFIG_BASICAUTH_PASSWORD: 12345
+
+networks:
+  dev-people:
+    driver: bridge
+    external: false
+
+volumes:
+  dev-people-db:
+    external: false
