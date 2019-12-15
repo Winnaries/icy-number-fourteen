@@ -5,8 +5,8 @@ const db_user = process.env.DATABASE_USER || 'lemon';
 const db_pass = process.env.DATABASE_PASS || '12345';
 const db_auth = process.env.DATABASE_AUTH || 'admin';
 
-const db_url = `mongodb://${db_user}:${db_pass}@${db_ip}:${db_port}/${db_auth}`;
+const url = `mongodb://${db_user}:${db_pass}@${db_ip}:${db_port}/${db_auth}`;
 
-module.exports.db_url = db_url;
+module.exports = url;
 
 
