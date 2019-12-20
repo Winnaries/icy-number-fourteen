@@ -10,8 +10,15 @@ services:
   people-mongo:
     image: mongo:4
     restart: always
+    volumes:
+      - people-mongo:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: people
 
 networks:
   main:
     driver: bridge
+    external: false
+volumes:
+  people-mongo:
     external: false

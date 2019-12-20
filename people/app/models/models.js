@@ -1,10 +1,5 @@
-const mongoose = require('mongoose');
+const conn = require('./config/database');
 const url = require('./config/url');
-
-const conn = mongoose.createConnection(url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
 
 const studentSchema = require('./schema/student');
 const teacherSchema = require('./schema/teacher');
