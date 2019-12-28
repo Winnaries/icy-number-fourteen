@@ -15,10 +15,11 @@ services:
     volumes:
       - dev-people-db:/data/db
     environment:
+      MONGO_INITDB_DATABASE: people-dev
       MONGO_INITDB_ROOT_USERNAME: lemon
       MONGO_INITDB_ROOT_PASSWORD: 12345
     networks:
-      - dev-people
+      - dev-people-network
   people-mongo-express:
     image: mongo-express:latest
     restart: always
@@ -27,7 +28,7 @@ services:
     ports:
       - 8081:8081
     networks:
-      - dev-people
+      - dev-people-network
     environment:
       ME_CONFIG_MONGODB_SERVER: people-mongo
       ME_CONFIG_MONGODB_ADMINUSERNAME: lemon
@@ -36,7 +37,7 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: 12345
 
 networks:
-  dev-people:
+  dev-people-network:
     driver: bridge
     external: false
 

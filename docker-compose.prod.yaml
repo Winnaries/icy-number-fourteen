@@ -1,2 +1,20 @@
 # Only for Production
 version: "3.7"
+  # People Services
+  people-mongo:
+    volumes:
+      - people-db:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: people
+      MONGO_INITDB_ROOT_USERNAME: lemon
+      MONGO_INITDB_ROOT_PASSWORD: 12345
+    networks:
+      - people-network
+
+volumes:
+  people-db:
+    external: false
+
+networks:
+  people-network:
+    external: false
